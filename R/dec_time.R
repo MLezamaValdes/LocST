@@ -1,17 +1,17 @@
 
-#' Calculate time in hh:mm format from decimal time 
-#' 
-#' 
-#' @description calculates time in 23:30 from 23.5
-#' 
-#' 
+#' Calculate time in hh:mm format from decimal time
+#'
+#'
+#' @description calculates time in format 23:30 from 23.5
+#'
+#'
 #' @param dectime time vector in decimal numeric format
 #' @return character time vector in hh:mm format
 #' @author Maite Lezama Valdes
 #' @examples
 #' dt <- c(23.1, 23.5, 23.6)
 #' dec_time(dt)
-#' 
+#'
 
 dec_time <- function(dectime){
   h <- sapply(seq(length(dectime)), function(i){
