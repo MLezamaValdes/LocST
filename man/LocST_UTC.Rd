@@ -2,26 +2,33 @@
 % Please edit documentation in R/LocST_UTC.R
 \name{LocST_UTC}
 \alias{LocST_UTC}
-\title{Calculate UTC and local time from Local Solar Time}
+\title{Calculate UTC from Local Solar Time}
 \usage{
 LocST_UTC(LocST, utc, lon = NULL)
 }
 \arguments{
-\item{LocST}{Local solar time vector in mm:hh format or as a viewtime raster in decimal format or decimal format only}
+\item{LocST}{Local solar time vector in mm:hh format or as a viewtime raster in
+decimal format or decimal format only}
 
 \item{utc}{UTC day that was provided e.g. via filename or the corresponding UTC day
-(infered based on the local time zone the local solar time was reported for conversion
-to UTC time), format = '\%Y-\%m-\%d' or as POSIXlt date}
+(converted to UTC time from the local time zone the local solar time was reported for),
+format = '\%Y-\%m-\%d' or as POSIXlt date}
 
-\item{lon}{required only if no raster is used for LocST, to provide as decimal point numeric}
+\item{lon}{required only if no raster is used for LocST, to provide as decimal
+point numeric}
 }
 \value{
-data frame with lon and lat, as well as decimal format local solar time ("LocST"), hour format local solar time "LocST_h",UTC date calculated from LocST "utc_from_LocST", the original UTC input provided ("orgUTC") and a time difference between provided and calculated UTC times in case a POSIXlt format UTC date was provided (available e.g. in case of MODIS L2/swath data)
+data frame with lon and lat, as well as decimal format local solar
+time ("LocST"), hour format local solar time "LocST_h",UTC date calculated
+from LocST "utc_from_LocST", the original UTC input provided ("orgUTC") and
+a time difference between provided and calculated UTC times in case a POSIXlt
+format UTC date was provided (available e.g. in case of MODIS L2 / swath data)
 }
 \description{
-calculate UTC and local time from Local Solar Time, as provided e.g. in MODIS viewtime rasters
+calculate UTC from Local Solar Time, as provided e.g. in MODIS viewtime rasters
 }
 \examples{
+library(raster)
 #using MODIS L2 product's viewtime raster
 vtr_s <-raster(system.file("extdata", "vtr_s.tif", package="LocST"))
 utcdate <- strptime("2018-01-19 13:50", format='\%Y-\%m-\%d \%H:\%M', tz="UTC") # info derived from MOD11_L2 filename A2018019.1350
